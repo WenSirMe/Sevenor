@@ -1,31 +1,39 @@
 package org.sssta.sevenor.custom;
 
-import android.content.Context;
-import android.util.DisplayMetrics;
-import android.util.Log;
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import org.sssta.sevenor.R;
+import org.sssta.sevenor.activity.ImageReadActivity;
+import org.sssta.sevenor.model.Message;
 import org.sssta.sevenor.util.DensityUtil;
-import org.sssta.sevenor.util.MeasureUtil;
 
 import java.util.ArrayList;
+
+import butterknife.Bind;
 
 /**
  * Created by Heaven on 2015/11/21.
  */
 public class RotateLayoutManager implements RotateCardView.RotationChangeListener {
+
     private ViewGroup mViewGroup;
     private int count = 7;
     private int focusIndex = 0;
+    private static final int beginIndex = 3;
+    private ArrayList<ImageView> imageViews = new ArrayList<>();
     private ArrayList<RotateCardView> views = new ArrayList<>();
-
-    public RotateLayoutManager(ViewGroup mViewGroup) {
+    private ArrayList<Message> messages = new ArrayList<>();
+    private Activity mActivity;
+    public RotateLayoutManager(ViewGroup mViewGroup,Activity activity) {
         this.mViewGroup = mViewGroup;
-        init();
+        mActivity = activity;
     }
 
     public int getCount() {
@@ -35,19 +43,25 @@ public class RotateLayoutManager implements RotateCardView.RotationChangeListene
     public void setCount(int count) {
         this.count = count;
     }
-    private void init(){
-        createRotateView();
-        bindRotateView();
+
+    public void addRotateView() {
+
+        if (views.isEmpty() && mViewGroup.getChildCount() == 0) {
+            createRotateView();
+            addInRotateView();
+
+        }
+
     }
-    public void createRotateView(){
+
+    public void createRotateView() {
         int i;
-        for (i=0;i<count;i++){
-            final RotateCardView view = (RotateCardView)LayoutInflater.from(mViewGroup.getContext()).inflate(R.layout.item_image_message, mViewGroup, false);
+        for (i = 0; i < count; i++) {
+            final RotateCardView view = (RotateCardView) LayoutInflater.from(mViewGroup.getContext()).inflate(R.layout.item_image_message, mViewGroup, false);
             views.add(view);
             view.setIndex(i);
             view.setOnWindFlagChangeListener(this);
-            int width;
-            int heigth;
+            ((ViewGroup)view).setTransitionGroup(false);
             view.post(new Runnable() {
                 @Override
                 public void run() {
@@ -59,20 +73,32 @@ public class RotateLayoutManager implements RotateCardView.RotationChangeListene
                 }
             });
 
-        }
-    }
-    public void bindRotateView(){
-        int i;
-        for (i=0;i<count;i++){
-            View child = views.get(i);
-            mViewGroup.addView(child);
-        }
 
-        updateViewRotate(0,0);
+        }
     }
-    private void updateViewRotate(float rotation,int index){
+
+    private void addInRotateView() {
         int i;
-        for (i=0;i<count;i++){
+        for (i = 0; i < count; i++) {
+            View child = views.get(i);
+            mViewGroup.addView(child, i);
+        }
+    }
+
+    public void bindRotateView() {
+        int i;
+        for (i = 0; i < count; i++) {
+            final ImageView imageView = (ImageView)views.get(i).findViewById(R.id.image_card);
+            imageView.setImageResource(messages.get(i).getImageIndex());
+            imageViews.add(imageView);
+        }
+        updateViewRotate(0,beginIndex);
+        boundViewEffect(beginIndex);
+    }
+
+    private void updateViewRotate(float rotation, int index) {
+        int i;
+        for (i = 0; i < count; i++) {
             if (i == index)
                 continue;
             views.get(i).setRotation(rotation + (i - index) * 10);
@@ -80,7 +106,7 @@ public class RotateLayoutManager implements RotateCardView.RotationChangeListene
     }
 
     @Override
-    public void rotationChange(float rotation,int index) {
+    public void rotationChange(float rotation, int index) {
         updateViewRotate(rotation, index);
         if (views.get(index).getIsDraging())
             boundViewEffect(focusIndex);
@@ -94,13 +120,36 @@ public class RotateLayoutManager implements RotateCardView.RotationChangeListene
         this.focusIndex = focusIndex;
     }
 
-    public void boundViewEffect(int index){
-        Log.i("mmm",String.valueOf(index));
-        int b = index>0?index-1:0;
-        int e = index<6?index+1:6;
+    public void boundViewEffect(int index) {
         int i;
-        for (i=b;i<=e;i++){
-            views.get(i).setAlpha(1-(float)(0.8*Math.abs(views.get(i).getRotation())/10));
+        for (i = Math.max(index - 2, 0); i <= Math.min(index + 2, 6); i++) {
+            views.get(i).setAlpha(1 - (float) (0.8 * Math.abs(views.get(i).getRotation()) / 10));
+            views.get(i).setScaleX(1 - (float) (0.2 * Math.abs(views.get(i).getRotation()) / 10));
+            views.get(i).setScaleY(1 - (float) (0.2 * Math.abs(views.get(i).getRotation()) / 10));
         }
+    }
+
+    public void clearView() {
+        int i;
+        for (i = 0; i < 7; i++)
+            views.get(i).setVisibility(View.GONE);
+    }
+
+    public void clearContent() {
+        views.clear();
+    }
+
+    public void updateViewContent(ArrayList<Message> list) {
+        messages = list;
+        bindRotateView();
+    }
+
+    @Override
+    public void doubleClick(int index) {
+        Intent intent = new Intent(mActivity, ImageReadActivity.class);
+        intent.putExtra("resId", messages.get(index).getImageIndex());
+        ActivityOptions options = ActivityOptions
+                .makeSceneTransitionAnimation(mActivity, imageViews.get(index), "rob");
+        mActivity.startActivity(intent, options.toBundle());
     }
 }

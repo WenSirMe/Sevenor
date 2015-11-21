@@ -27,6 +27,7 @@ public class RotateCardView extends CardView {
     private int index = 0;
     private float correctRotation = 0;
     private Boolean isDraging = false;
+    private long lastTime = 0;
     public int getIndex() {
         return index;
     }
@@ -72,6 +73,12 @@ public class RotateCardView extends CardView {
         }
         switch (ev.getAction()){
             case MotionEvent.ACTION_DOWN:
+                Log.i("a",String.valueOf(System.currentTimeMillis())+ " "+
+                        String.valueOf(System.currentTimeMillis()));
+                if (System.currentTimeMillis()-lastTime<300){
+                    mRotationChangeListener.doubleClick(index);
+                }
+                lastTime = System.currentTimeMillis();
                 lastRotation = (float)Math.toDegrees(Math.atan2(touchY, touchX));
                 downRotation = getRotation();
                 break;
@@ -99,7 +106,7 @@ public class RotateCardView extends CardView {
                 focusIndex = index-t/10*k;
             }
             mRotationChangeListener.rotationChangeTouchUp(focusIndex);
-            Log.i("ff", String.valueOf(focusIndex));
+            Log.i("ff", String.valueOf(index));
             bundle.putInt("i", focusIndex);
             final float beginRotation = getRotation();
             isDraging = true;
@@ -134,6 +141,7 @@ public class RotateCardView extends CardView {
     public interface RotationChangeListener{
         void rotationChange(float rotation,int index);
         void rotationChangeTouchUp(int focusIndex);
+        void doubleClick(int index);
     }
     public void setOnWindFlagChangeListener(RotationChangeListener rotationChangeListener){
         mRotationChangeListener = rotationChangeListener;

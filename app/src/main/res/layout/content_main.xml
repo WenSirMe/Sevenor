@@ -6,54 +6,75 @@
     android:layout_height="match_parent"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="org.sssta.sevenor.MainActivity"
+    tools:context=".activity.MainActivity"
     tools:showIn="@layout/activity_main"
     android:background="@color/main_color_1">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_frame">
+
+    </FrameLayout>
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerInside"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_main_menu_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/main_menu_button"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:background="@color/main_color_2"
-
-        >
-        <Button
-            style="?attr/buttonBarButtonStyle"
+        android:orientation="vertical"
+        android:background="@color/main_color_2">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:textSize="14sp"
-            android:text="AAA"
-            android:layout_weight="1"
-            />
-        <Button
-            style="?attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:textSize="14sp"
-            android:text="AAA"
-
-            android:layout_weight="1"
-            />
-        <Button
-            style="?attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:textSize="14sp"
-            android:text="AAA"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <Button
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:text="@string/tab_image_text"
+                android:layout_weight="1"
+                android:id="@+id/tab_button_image"
+                />
+            <Button
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:text="@string/tab_article_content"
+                android:layout_weight="1"
+                android:id="@+id/tab_button_article"
+                />
+            <Button
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:text="@string/tab_find_people"
+                android:id="@+id/tab_button_find"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:background="@color/tab_text_color_1"
+            android:id="@+id/tab_image_line"
             />
     </LinearLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/test_layout">
-
-    </RelativeLayout>
 
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import org.sssta.sevenor.R;
  * Use the {@link FindFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FindFragment extends Fragment {
+public class FindFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +60,8 @@ public class FindFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setEnterTransition(new Fade());
+        setExitTransition(new Fade());
     }
 
     @Override
@@ -105,5 +108,15 @@ public class FindFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void refresh() {
+
+    }
+
+    @Override
+    public void updateContent() {
+
     }
 }

@@ -2,15 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/image_fragment"
+    android:background="@color/main_color_1"
     tools:context="org.sssta.sevenor.fragement.ImageFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="#FFAAFF">
-
-    </LinearLayout>
 
 </FrameLayout>

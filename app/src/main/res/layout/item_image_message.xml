@@ -3,18 +3,43 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_margin="90dp"
-    android:id="@+id/wind_edit_card"
+    android:layout_marginLeft="80dp"
+    android:layout_marginRight="80dp"
+    android:layout_marginTop="112dp"
+    android:layout_marginBottom="120dp"
+    android:background="@android:color/transparent"
     card_view:cardElevation="3dp"
-
+    android:id="@+id/rotate_image_card"
     card_view:cardCornerRadius="2dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="#FFAAFF">
+        android:background="@color/main_color_1"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_weight="9"
+            android:transitionName = "rob"
+            android:background="@color/main_color_1"
+            android:id="@+id/image_card"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+            <ImageButton
 
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_tag_un_flag_button"
+                android:scaleType="centerInside"
+                android:id="@+id/flag_button"/>
+        </LinearLayout>
     </LinearLayout>
 
 

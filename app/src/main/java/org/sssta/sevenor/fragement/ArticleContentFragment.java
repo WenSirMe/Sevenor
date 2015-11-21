@@ -1,64 +1,58 @@
 package org.sssta.sevenor.fragement;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import org.sssta.sevenor.R;
-import org.sssta.sevenor.custom.RotateLayoutManager;
+import org.sssta.sevenor.activity.ArticleReadActivity;
 import org.sssta.sevenor.util.ContentUtil;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link OnFragmentInteractionListener} interface
+ * {@link ArticleContentFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ImageFragment#newInstance} factory method to
+ * Use the {@link ArticleContentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ImageFragment extends BaseFragment {
+public class ArticleContentFragment extends BaseFragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    @Bind(R.id.image_fragment)
-    FrameLayout imageFragment;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private int index;
     private String mParam2;
-    private boolean hasAddRotateView =false;
+
     private OnFragmentInteractionListener mListener;
 
-    public ImageFragment() {
+    public ArticleContentFragment() {
         // Required empty public constructor
     }
-    private  RotateLayoutManager layoutManager;
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ImageFragment.
+     * @return A new instance of fragment ArticleContentFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ImageFragment newInstance(String param1, String param2) {
-
-        ImageFragment fragment = new ImageFragment();
+    public static ArticleContentFragment newInstance(int param1, String param2) {
+        ArticleContentFragment fragment = new ArticleContentFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putInt(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -68,23 +62,30 @@ public class ImageFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            index = getArguments().getInt(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        setEnterTransition(new Fade());
-        setExitTransition(new Fade());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_image, container, false);
-        ButterKnife.bind(this, view);
-        layoutManager = new RotateLayoutManager(imageFragment,getActivity());
-        layoutManager.addRotateView();
-        layoutManager.updateViewContent(ContentUtil.getImageContent());
-        return view;
+//        View v = inflater.inflate(R.layout.fragment_about_us2, container, false);
+//        View textView = v.findViewById(R.id.about_us_text);
+//        ViewGroup vp = (ViewGroup)textView.getParent();
+//        vp.setOnClickListener(this);
+//        if (index == 2)
+//            vp.setBackgroundResource(R.drawable.bg_about_pager_pink);
+//        else
+//            vp.setBackgroundResource(R.drawable.bg_about_pager_blue);
+//        ((TextView) textView).setText(AboutPeopleList[index]);
+        View v = inflater.inflate(R.layout.item_article, container, false);
+        TextView textView = (TextView) v.findViewById(R.id.article_text_view);
+        textView.setBackgroundResource(R.drawable.bg_article_card_1);
+        textView.getBackground().setAlpha(55);
+        textView.setText(ContentUtil.getTextContent().get(index).getText());
+        textView.setOnClickListener(this);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -111,28 +112,6 @@ public class ImageFragment extends BaseFragment {
         mListener = null;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
-    @Override
-    public void onPause() {
-
-        super.onPause();
-    }
-
-    @Override
-    public void refresh() {
-
-    }
-
-    @Override
-    public void updateContent() {
-
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -146,5 +125,27 @@ public class ImageFragment extends BaseFragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void refresh() {
+
+    }
+
+    @Override
+    public void updateContent() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.article_text_view:
+                Intent intent = new Intent(getActivity(), ArticleReadActivity.class);
+                intent.putExtra("index",index);
+                startActivity(intent);
+                break;
+
+        }
     }
 }
