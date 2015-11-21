@@ -26,7 +26,7 @@ public class RotateLayoutManager implements RotateCardView.RotationChangeListene
     private ViewGroup mViewGroup;
     private int count = 7;
     private int focusIndex = 0;
-    private static final int beginIndex = 3;
+    private static final int beginIndex = 0;
     private ArrayList<ImageView> imageViews = new ArrayList<>();
     private ArrayList<RotateCardView> views = new ArrayList<>();
     private ArrayList<Message> messages = new ArrayList<>();

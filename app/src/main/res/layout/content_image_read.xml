@@ -10,30 +10,33 @@
     tools:context="org.sssta.sevenor.activity.ImageReadActivity"
     tools:showIn="@layout/activity_image_read">
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:id="@+id/read_image_view"
-        android:transitionName = "rob"
-        android:layout_weight="9"/>
-    <LinearLayout
+        android:layout_weight="7"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/read_image_view"
+        android:scaleType="centerCrop"
+        android:transitionName = "rob" />
+    <LinearLayout
         android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:weightSum="5"
         android:orientation="horizontal"
         android:background="#FFFFFF">
         <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_read_back_button" />
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_read_collect_button"/>
 
