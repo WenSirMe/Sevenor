@@ -1,21 +1,16 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="UserCenterTheme"
-        parent="@android:style/Theme.Holo.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
+    <style name="UserCenterTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/user_background</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:actionBarStyle">@style/UserCenterActionBar</item>
     </style>
 
-  
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:actionBarStyle">@style/UserCenterActionBar</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -32,10 +27,5 @@
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
     </declare-styleable>
-
-    <style name="UserCenterActionBar"
-        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/user_background</item>
-    </style>
 
 </resources>

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -22,10 +22,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserCenterActivity"
+            android:name=".activity.UserCenterActivity"
             android:label="@string/title_activity_user_center"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/UserCenterTheme"></activity>
+        <activity
+            android:name=".activity.PersonMeetingActivity"
+            android:label="@string/title_activity_person_meeting"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/UserCenterTheme"></activity>
     </application>
 
 </manifest>

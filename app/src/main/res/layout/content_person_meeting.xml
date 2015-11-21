@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/personal_center_bg"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.UserCenterActivity"
-    tools:showIn="@layout/activity_user_center">
+    tools:context="org.sssta.sevenor.activity.PersonMeetingActivity"
+    tools:showIn="@layout/activity_person_meeting">
 
     <org.sssta.sevenor.ui.CircleImageView
+        android:id="@+id/meeting_head_pic"
         app:layout_marginTopPercent="7%"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/personal_center_photo"
+        android:src="@drawable/meeting_photo"
         android:layout_width="@dimen/user_phone_wh"
         android:layout_height="@dimen/user_phone_wh" />
 
     <LinearLayout
-        android:id="@+id/linear_user_name"
+        android:id="@+id/linear_meeting_usrName"
         app:layout_marginTopPercent="40%"
         android:layout_width="match_parent"
         app:layout_heightPercent="10%"
@@ -26,12 +26,12 @@
         android:paddingBottom="@dimen/user_item_paddingtb"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/user_center_text_name"
+            android:id="@+id/meeting_text_userName"
             android:textSize="@dimen/user_text_size"
             android:textColor="@color/user_background"
             android:layout_marginEnd="@dimen/user_text_margin_end"
             android:gravity="center"
-            android:text="无色方糖"
+            android:text="林韬"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <ImageView
@@ -43,8 +43,8 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_below="@+id/linear_user_name"
-        android:id="@+id/linear_user_sex"
+        android:layout_below="@+id/linear_meeting_usrName"
+        android:id="@+id/linear_meeting_userSex"
         android:layout_width="match_parent"
         app:layout_heightPercent="10%"
         android:gravity="end|center_vertical"
@@ -52,7 +52,7 @@
         android:paddingBottom="@dimen/user_item_paddingtb"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/user_center_text_sex"
+            android:id="@+id/meeting_text_sex"
             android:textSize="@dimen/user_text_size"
             android:textColor="@color/user_background"
             android:layout_marginEnd="@dimen/user_text_margin_end"
@@ -69,10 +69,11 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
     <LinearLayout
         app:layout_marginTopPercent="7%"
-        android:layout_below="@+id/linear_user_sex"
-        android:id="@+id/linear_userInfo_shared"
+        android:layout_below="@+id/linear_meeting_userSex"
+        android:id="@+id/linear_meeting_userShared"
         android:layout_width="match_parent"
         app:layout_heightPercent="10%"
         android:gravity="end|center_vertical"
@@ -100,15 +101,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-
-
     </LinearLayout>
 
     <LinearLayout
-        android:gravity="end|center_vertical"
-        android:layout_below="@+id/linear_userInfo_shared"
+        android:layout_below="@+id/linear_meeting_userShared"
         android:layout_width="match_parent"
         app:layout_heightPercent="10%"
+        android:gravity="end|center_vertical"
         android:paddingTop="@dimen/user_item_paddingtb"
         android:paddingBottom="@dimen/user_item_paddingtb"
         android:layout_height="wrap_content">
@@ -134,5 +133,4 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-
 </android.support.percent.PercentRelativeLayout>

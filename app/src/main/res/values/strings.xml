@@ -14,4 +14,5 @@
         <item>hero</item>
         <item>woman</item>
     </string-array>
+    <string name="title_activity_person_meeting">PersonMeetingActivity</string>
 </resources>

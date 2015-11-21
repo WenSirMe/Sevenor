@@ -1,6 +1,7 @@
-package org.sssta.sevenor;
+package org.sssta.sevenor.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.sssta.sevenor.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,18 +24,14 @@ public class UserCenterActivity extends AppCompatActivity {
     TextView userCenterTextSex;
     @Bind(R.id.user_center_image_sex)
     ImageView userCenterImageSex;
-    @Bind(R.id.user_center_text_level)
-    TextView userCenterTextLevel;
-    @Bind(R.id.user_center_text_exp)
-    TextView userCenterTextExp;
-    @Bind(R.id.user_center_text_collection)
-    TextView userCenterTextCollection;
     private Context mContext;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_center);
+        intent = getIntent();
         ButterKnife.bind(this);
         mContext = this;
         ActionBar actionBar = getSupportActionBar();
@@ -45,9 +44,6 @@ public class UserCenterActivity extends AppCompatActivity {
     }
 
 
-    void init() {
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

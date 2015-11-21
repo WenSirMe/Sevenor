@@ -7,4 +7,7 @@
 
     <!--user center-->
     <color name="user_background">#102A54</color>
+
+    <!--meeting fragment-->
+    <color name="meeting_user_name_text">#efded1d1</color>
 </resources>

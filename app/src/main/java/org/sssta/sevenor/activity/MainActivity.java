@@ -1,26 +1,30 @@
-package org.sssta.sevenor;
+package org.sssta.sevenor.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import org.sssta.sevenor.Constants;
+import org.sssta.sevenor.R;
+import org.sssta.sevenor.activity.fragment.MeetingFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.drawer_navigation)
-    NavigationView drawerNavigation;
-    @Bind(R.id.layout_drawer)
-    DrawerLayout layoutDrawer;
+    private int centerX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +33,18 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+        /**
+         * 保留 在生成fragment之前
+         */
+        Constants.window_width = getWindowManager().getDefaultDisplay().getWidth();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,UserCenterActivity.class));
-                LinearLayout linearLayout;
-            }
-        });
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+        Fragment fragment = MeetingFragment.newInstance(null,null);
+        transaction.replace(R.id.testFrame,fragment);
+        transaction.commit();
+
+
     }
 
     @Override
