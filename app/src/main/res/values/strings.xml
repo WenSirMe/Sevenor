@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Sevenor</string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--navigation menu -->
+    <string name="nav_collection">收藏</string>
+    <string name="nav_release">发布</string>
+    <string name="title_activity_user_center">UserCenterActivity</string>
+    <string-array name="user_sex">
+        <item>hero</item>
+        <item>woman</item>
+    </string-array>
 </resources>
