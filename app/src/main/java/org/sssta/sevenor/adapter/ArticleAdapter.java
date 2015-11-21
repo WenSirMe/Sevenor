@@ -4,8 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import org.sssta.sevenor.fragement.ArticleContentFragment;
-import org.sssta.sevenor.fragement.ArticleFragment;
+import org.sssta.sevenor.fragment.ArticleContentFragment;
 
 /**
  * Created by Heaven on 2015/11/22.

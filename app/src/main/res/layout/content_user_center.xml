@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/personal_center_bg"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.UserCenterActivity"
+    tools:showIn="@layout/activity_user_center">
+
+    <org.sssta.sevenor.ui.CircleImageView
+        app:layout_marginTopPercent="7%"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/personal_center_photo"
+        android:layout_width="@dimen/user_phone_wh"
+        android:layout_height="@dimen/user_phone_wh" />
+
+    <LinearLayout
+        android:id="@+id/linear_user_name"
+        app:layout_marginTopPercent="40%"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="10%"
+        android:gravity="end|center_vertical"
+        android:paddingTop="@dimen/user_item_paddingtb"
+        android:paddingBottom="@dimen/user_item_paddingtb"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/user_center_text_name"
+            android:textSize="@dimen/user_text_size"
+            android:textColor="@color/user_background"
+            android:layout_marginEnd="@dimen/user_text_margin_end"
+            android:gravity="center"
+            android:text="无色方糖"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_marginEnd="@dimen/user_image_margin_end"
+            android:scaleType="fitCenter"
+            android:src="@drawable/personal_center_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/linear_user_name"
+        android:id="@+id/linear_user_sex"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="10%"
+        android:gravity="end|center_vertical"
+        android:paddingTop="@dimen/user_item_paddingtb"
+        android:paddingBottom="@dimen/user_item_paddingtb"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/user_center_text_sex"
+            android:textSize="@dimen/user_text_size"
+            android:textColor="@color/user_background"
+            android:layout_marginEnd="@dimen/user_text_margin_end"
+            android:gravity="center"
+            android:text="hero"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/user_center_image_sex"
+            android:layout_marginEnd="@dimen/user_image_margin_end"
+            android:scaleType="fitCenter"
+            android:src="@drawable/personal_center_sex_man_gun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        app:layout_marginTopPercent="7%"
+        android:layout_below="@+id/linear_user_sex"
+        android:id="@+id/linear_userInfo_shared"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="10%"
+        android:gravity="end|center_vertical"
+        android:paddingTop="@dimen/user_item_paddingtb"
+        android:paddingBottom="@dimen/user_item_paddingtb"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginEnd="140dp"
+            android:src="@drawable/ic_chevron_left_black"
+            android:scaleType="fitCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textSize="@dimen/user_text_size"
+            android:textColor="@color/user_background"
+            android:layout_marginEnd="@dimen/user_text_margin_end"
+            android:gravity="center"
+            android:text="分享记录"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_marginEnd="@dimen/user_image_margin_end"
+            android:scaleType="fitCenter"
+            android:src="@drawable/personal_center_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="end|center_vertical"
+        android:layout_below="@+id/linear_userInfo_shared"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="10%"
+        android:paddingTop="@dimen/user_item_paddingtb"
+        android:paddingBottom="@dimen/user_item_paddingtb"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginEnd="174dp"
+            android:src="@drawable/ic_chevron_left_black"
+            android:scaleType="fitCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textSize="@dimen/user_text_size"
+            android:textColor="@color/user_background"
+            android:layout_marginEnd="@dimen/user_text_margin_end"
+            android:gravity="center"
+            android:text="收藏"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_marginEnd="@dimen/user_image_margin_end"
+            android:scaleType="fitCenter"
+            android:src="@drawable/personal_center_collection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</android.support.percent.PercentRelativeLayout>

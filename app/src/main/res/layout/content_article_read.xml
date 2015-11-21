@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/main_color_1"
             android:textSize="22sp"
+            android:gravity="center_horizontal"
             android:id="@+id/article_read_text"/>
     </ScrollView>
 

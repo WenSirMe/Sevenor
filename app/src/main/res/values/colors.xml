@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#102A54</color>
     <color name="colorPrimaryDark">#102A54</color>
     <color name="colorAccent">#FBBE3C</color>
@@ -9,4 +10,8 @@
 
     <color name="tab_text_color_1">#FFFFFFFF</color>
     <color name="tab_text_color_2">#AAFFFFFF</color>
+    <color name="user_background">#102A54</color>
+
+    <color name="meeting_user_name_text">#efded1d1</color>
+
 </resources>

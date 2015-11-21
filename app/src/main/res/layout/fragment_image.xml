@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/image_fragment"
     android:background="@color/main_color_1"
-    tools:context="org.sssta.sevenor.fragement.ImageFragment">
+    tools:context="org.sssta.sevenor.fragment.ImageFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

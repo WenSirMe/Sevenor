@@ -1,19 +1,14 @@
 package org.sssta.sevenor.activity;
 
+
 import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.ChangeBounds;
-import android.transition.ChangeClipBounds;
-import android.transition.ChangeImageTransform;
-import android.transition.ChangeTransform;
-import android.transition.Transition;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -25,23 +20,26 @@ import android.widget.ImageView;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 
+import org.sssta.sevenor.Constants;
 import org.sssta.sevenor.R;
-import org.sssta.sevenor.fragement.ArticleContentFragment;
-import org.sssta.sevenor.fragement.ArticleFragment;
-import org.sssta.sevenor.fragement.BaseFragment;
-import org.sssta.sevenor.fragement.FindFragment;
-import org.sssta.sevenor.fragement.ImageFragment;
+import org.sssta.sevenor.fragment.ArticleContentFragment;
+import org.sssta.sevenor.fragment.ArticleFragment;
+import org.sssta.sevenor.fragment.BaseFragment;
+import org.sssta.sevenor.fragment.ImageFragment;
+import org.sssta.sevenor.fragment.MeetingFragment;
 import org.sssta.sevenor.util.DensityUtil;
 import org.sssta.sevenor.util.MeasureUtil;
 
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener
         , View.OnClickListener
         , ImageFragment.OnFragmentInteractionListener
         , ArticleFragment.OnFragmentInteractionListener
-        , FindFragment.OnFragmentInteractionListener
+        , MeetingFragment.OnFragmentInteractionListener
         , ArticleContentFragment.OnFragmentInteractionListener{
 
     @Bind(R.id.tab_button_image)
@@ -58,11 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private int TAB_UN_CHECK_COLOR;
     private int focusFragmentIndex = 0;
     private ObjectAnimator animator = new ObjectAnimator();
-    private BaseFragment[] fragments = new BaseFragment[]{
-            ImageFragment.newInstance("", ""),
-            ArticleFragment.newInstance("", ""),
-            FindFragment.newInstance("", "")
-    };
+    private BaseFragment[] fragments ;
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -107,7 +101,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         return super.onOptionsItemSelected(item);
     }
 
+
     private void init() {
+        Constants.window_width = DensityUtil.dip2px(this,360);
+        fragments = new BaseFragment[]{
+                ImageFragment.newInstance("", ""),
+                ArticleFragment.newInstance("", ""),
+                MeetingFragment.newInstance("", "")
+        };
         tabButtonImage.setTextColor(TAB_CHECK_COLOR);
         tabButtonArticle.setTextColor(TAB_UN_CHECK_COLOR);
         tabButtonFind.setTextColor(TAB_UN_CHECK_COLOR);
@@ -198,4 +199,5 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         transaction.replace(R.id.main_frame, fragments[index]);
         transaction.commit();
     }
+
 }

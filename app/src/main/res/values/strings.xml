@@ -4,9 +4,23 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="tab_image_text">画语</string>
     <string name="tab_article_content">文字</string>
     <string name="tab_find_people">遇见</string>
     <string name="title_activity_image_read">ImageReadActivity</string>
     <string name="title_activity_article_read">ArticleReadActivity</string>
+
+
+
+    <!--navigation menu -->
+    <string name="nav_collection">收藏</string>
+    <string name="nav_release">发布</string>
+    <string name="title_activity_user_center">UserCenterActivity</string>
+    <string-array name="user_sex">
+        <item>hero</item>
+        <item>woman</item>
+    </string-array>
+    <string name="title_activity_person_meeting">PersonMeetingActivity</string>
+
 </resources>
