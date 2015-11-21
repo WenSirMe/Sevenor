@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    android:drawable="@color/tab_text_color_1"
+    android:state_checked="true">
+    </item>
+    <item
+        android:drawable="@color/tab_text_color_1"
+        android:state_focused="true">
+    </item>
+    <item
+        android:drawable="@color/tab_text_color_2"
+        android:state_checked="false"
+        android:state_focused="false">
+    </item>
+</selector>
