@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import org.sssta.sevenor.Constants;
 import org.sssta.sevenor.R;
 import org.sssta.sevenor.model.Person;
+import org.sssta.sevenor.ui.CircleImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,7 +27,9 @@ public class UserCenterActivity extends AppCompatActivity {
     @Bind(R.id.user_center_text_sex)
     TextView textSex;
     @Bind(R.id.user_center_image_sex)
-    ImageView personalCenterHeadPic;
+    ImageView userSexImage;
+    @Bind(R.id.user_center_head_pic)
+    CircleImageView personalCenterHeadPic;
     private Context mContext;
     private Person person;
 
@@ -52,11 +55,10 @@ public class UserCenterActivity extends AppCompatActivity {
             textUsername.setText(person.getName());
             String[] strings = getResources().getStringArray(R.array.user_sex);
             textSex.setText(strings[person.getSex()]);
-            Picasso.with(mContext).load(person.getImage_url()).placeholder(R.drawable.meeting_photo)
-                    .error(R.drawable.meeting_photo).into(personalCenterHeadPic);
+            Picasso.with(mContext).load(person.getImage_url()).placeholder(R.drawable.personal_center_photo)
+                    .error(R.drawable.personal_center_photo).into(personalCenterHeadPic);
         }
     }
-
 
 
     @Override
