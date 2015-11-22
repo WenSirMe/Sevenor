@@ -11,11 +11,13 @@ public class Message {
     int type;
     String text;
     int imageIndex;
+    String title;
 
-    public Message(int type, String text, int imageIndex) {
+    public Message(int type, String text, int imageIndex,String title) {
         this.type = type;
         this.text = text;
         this.imageIndex = imageIndex;
+        this.title = title;
     }
 
     public int getType() {
@@ -28,5 +30,9 @@ public class Message {
 
     public int getImageIndex() {
         return imageIndex;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

@@ -41,6 +41,13 @@ public class MeetingAdapter extends RecyclerView.Adapter {
         for (int i=1;i<7;i++) {
             chImageIdList.add(firstId+i);
         }
+        persons.get(0).setResourceId(R.drawable.ic_native_1);
+        persons.get(1).setResourceId(R.drawable.ic_native_2);
+        persons.get(2).setResourceId(R.drawable.ic_native_3);
+        persons.get(3).setResourceId(R.drawable.ic_native_4);
+        persons.get(4).setResourceId(R.drawable.ic_native_3);
+        persons.get(5).setResourceId(R.drawable.ic_native_2);
+        persons.get(6).setResourceId(R.drawable.ic_native_1);
     }
 
     @Override
@@ -68,7 +75,7 @@ public class MeetingAdapter extends RecyclerView.Adapter {
             myViewHolder.userName.setAlpha(0.0f);
             myViewHolder.chImage.setImageResource(chImageIdList.get(position-1));
 //            Picasso.with(mContext).load(person.getImage_url()).placeholder(R.drawable.user_image).into(myViewHolder.userImage);
-//            Picasso.with(mContext).load(person.resourceId).into(myViewHolder.userImage);
+            Picasso.with(mContext).load(person.getResourceId()).into(myViewHolder.userImage);
         }
 
     }

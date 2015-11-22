@@ -1,7 +1,6 @@
 package org.sssta.sevenor.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import org.sssta.sevenor.Constants;
 import org.sssta.sevenor.R;
+import org.sssta.sevenor.model.Person;
+import org.sssta.sevenor.ui.CircleImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -19,30 +23,43 @@ import butterknife.ButterKnife;
 public class UserCenterActivity extends AppCompatActivity {
 
     @Bind(R.id.user_center_text_name)
-    TextView userCenterTextName;
+    TextView textUsername;
     @Bind(R.id.user_center_text_sex)
-    TextView userCenterTextSex;
+    TextView textSex;
     @Bind(R.id.user_center_image_sex)
-    ImageView userCenterImageSex;
+    ImageView userSexImage;
+    @Bind(R.id.user_center_head_pic)
+    CircleImageView personalCenterHeadPic;
     private Context mContext;
-    private Intent intent;
+    private Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_center);
-        intent = getIntent();
         ButterKnife.bind(this);
         mContext = this;
+        Bundle bundle = getIntent().getExtras();
+        if (bundle !=null)
+            person = (Person) bundle.get(Constants.PERSON);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle("");
             actionBar.setElevation(0f);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
+        initView();
     }
 
+    private void initView() {
+        if (person != null) {
+            textUsername.setText(person.getName());
+            String[] strings = getResources().getStringArray(R.array.user_sex);
+            textSex.setText(strings[person.getSex()]);
+            Picasso.with(mContext).load(person.getImage_url()).placeholder(R.drawable.personal_center_photo)
+                    .error(R.drawable.personal_center_photo).into(personalCenterHeadPic);
+        }
+    }
 
 
     @Override

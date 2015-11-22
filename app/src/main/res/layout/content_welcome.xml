@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2x"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".WelcomeActivity"
+    tools:showIn="@layout/activity_welcome">
+
+    <Button
+        android:id="@+id/welcome_button"
+        android:textColor="@color/welcome_button_stroke"
+        app:layout_widthPercent="40%"
+        android:textSize="18sp"
+        android:background="@drawable/welcome_button_shape"
+        android:text="@string/welcome_find"
+        android:layout_marginBottom="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</android.support.percent.PercentRelativeLayout>

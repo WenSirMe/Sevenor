@@ -14,6 +14,8 @@ public class ArticleReadActivity extends AppCompatActivity {
 
     @Bind(R.id.article_read_text)
     TextView articleReadText;
+    @Bind(R.id.article_read_title)
+    TextView articleReadTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +24,12 @@ public class ArticleReadActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         articleReadText.setText(ContentUtil
                 .getTextContent()
-                .get(getIntent().getIntExtra("index",0))
+                .get(getIntent().getIntExtra("index", 0))
                 .getText());
+        articleReadTitle.setText(ContentUtil
+                .getTextContent()
+                .get(getIntent().getIntExtra("index", 0))
+                .getTitle());
     }
 
 }

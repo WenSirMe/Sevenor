@@ -10,6 +10,7 @@
     tools:showIn="@layout/activity_user_center">
 
     <org.sssta.sevenor.ui.CircleImageView
+        android:id="@+id/user_center_head_pic"
         app:layout_marginTopPercent="7%"
         android:layout_centerHorizontal="true"
         android:src="@drawable/personal_center_photo"

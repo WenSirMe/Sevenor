@@ -79,7 +79,7 @@ public class ArticleContentFragment extends BaseFragment implements View.OnClick
 //        ((TextView) textView).setText(AboutPeopleList[index]);
         View v = inflater.inflate(R.layout.item_article, container, false);
         TextView textView = (TextView) v.findViewById(R.id.article_text_view);
-        textView.setBackgroundResource(R.drawable.bg_article_card_1);
+        textView.setBackgroundResource(R.drawable.bg_article_card_1+index%2);
         textView.getBackground().setAlpha(55);
         textView.setText(ContentUtil.getTextContent().get(index).getText());
         textView.setOnClickListener(this);

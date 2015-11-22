@@ -9,6 +9,7 @@ import android.app.Application;
 public class Constants {
 
     public static final String PERSON = "person";
-    public static final String[] sexs = new String[]{"hero","beauty"};
     public static int window_width;
+    public static final String SHAREDPREFERENCES = "senenor";
+    public static final String ISFIRSTLOGIN = "first";
 }
