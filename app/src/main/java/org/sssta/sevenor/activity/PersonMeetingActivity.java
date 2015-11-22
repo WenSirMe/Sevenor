@@ -54,7 +54,8 @@ public class PersonMeetingActivity extends AppCompatActivity {
         }
         if (person != null) {
             textUsername.setText(person.getName());
-            textSex.setText(Constants.sexs[person.getSex()]);
+            String[] strings = getResources().getStringArray(R.array.user_sex);
+            textSex.setText(strings[person.getSex()]);
             Picasso.with(mContext).load(person.getImage_url()).placeholder(R.drawable.personal_center_photo)
                     .error(R.drawable.personal_center_photo).into(meetingHeadPic);
         }
