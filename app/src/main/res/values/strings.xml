@@ -10,9 +10,14 @@
     <string name="nav_collection">收藏</string>
     <string name="nav_release">发布</string>
     <string name="title_activity_user_center">UserCenterActivity</string>
+
     <string-array name="user_sex">
         <item>hero</item>
         <item>woman</item>
     </string-array>
     <string name="title_activity_person_meeting">PersonMeetingActivity</string>
+    <string name="title_activity_wlecome">WlecomeActivity</string>
+
+    <!--welcome activity-->
+    <string name="welcome_find">发  现</string>
 </resources>

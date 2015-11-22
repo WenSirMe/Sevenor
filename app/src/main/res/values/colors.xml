@@ -10,4 +10,8 @@
 
     <!--meeting fragment-->
     <color name="meeting_user_name_text">#efded1d1</color>
+
+    <!--透明颜色-->
+    <color name="transparent_color">#00ffffff</color>
+    <color name="welcome_button_stroke">#b7ffffff</color>
 </resources>
